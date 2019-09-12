@@ -1,0 +1,929 @@
+[
+  {
+    "enable": true,
+    "id": 566,
+    "isRegex": true,
+    "regex": "「(([^「」]+){1,3})」",
+    "replaceSummary": "标点符号 对话修正",
+    "replacement": "“$1”",
+    "serialNumber": 2,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 567,
+    "isRegex": true,
+    "regex": "(?m)“([^“”]+)“([^“”]+(“|$))",
+    "replaceSummary": "标点符号 错误双引号修正①",
+    "replacement": "“$1”$2",
+    "serialNumber": 3,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 568,
+    "isRegex": true,
+    "regex": "(?m)(?<=^|：)”([^“”]+)“",
+    "replaceSummary": "标点符号 错误双引号修正②",
+    "replacement": "“$1”",
+    "serialNumber": 4,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 569,
+    "isRegex": true,
+    "regex": "，(?=[”）】］」』\\n])",
+    "replaceSummary": "标点符号 错误逗号修正",
+    "replacement": "。",
+    "serialNumber": 5,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 570,
+    "isRegex": true,
+    "regex": "(?<=[\\u4e00-\\u9fa5])(\\.|．|·)(?=[\\u4e00-\\u9fa5])",
+    "replaceSummary": "标点符号 英文姓名 名字•姓氏",
+    "replacement": "•",
+    "serialNumber": 6,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 571,
+    "isRegex": true,
+    "regex": "(?m)(?<=(^|“|‘|「))[!?！？，。、—…＆&＃#～~＠@￥¥％%]+|(?<=[”’。？！：；，、])[…—]{2}|(?<=\\S{25}[\\u4e00-\\u9fa5])\\r?\\n|(?<=“[^“”]{2,50})\\n“|(?<=“[^“”]{2,12})\\n|\\n(?=^”)",
+    "replaceSummary": "标点符号 净化：句首、段首",
+    "replacement": "",
+    "serialNumber": 7,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 572,
+    "isRegex": true,
+    "regex": "(?<=(！|？))\\1+|《》|【】|［］|「」|（）|\\(\\)|((?<=[。！？…—”\\n])[\\d\\w•]+：)?(“”)",
+    "replaceSummary": "标点符号 净化：成对",
+    "replacement": "",
+    "serialNumber": 8,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 590,
+    "isRegex": true,
+    "regex": "^(\\S+\\h)?(\\d{3,4}|[零一二三四五六七八九十百千]{1,7})(\\.(?=\\D)|、|\\s)",
+    "replaceSummary": "标题格式化 修正 序号统一",
+    "replacement": "第$2章 ",
+    "serialNumber": 9,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 591,
+    "isRegex": true,
+    "regex": "(?m)^(\\S+\\h)?(第(\\d{1,4}|[一二三四五六七八九十百千]{1,7})[章卷部节篇话回折]|(内容)?简介|卷首语|楔子|前言|序[言章]?|终章|后记|附录)(、|\\.|\\s|\\b)(.*)",
+    "replaceSummary": "标题格式化 对齐 格式统一",
+    "replacement": "§∆§$2 $6",
+    "serialNumber": 10,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 592,
+    "isRegex": true,
+    "regex": "[\\(\\[\\{（［【].*?(章|更|合一|[0-9千万]字|推荐|月票|打赏|鲜花|书币|盟主|修|谢|歉|祝|节|年).*?[\\)\\]\\}）］】]$|(?<=\\n)§∆§.+|§∆§|\\n(\\(|（|【)?[Pp][Ss]\\d?[:：].+(\\n.+){0,9}?$",
+    "replaceSummary": "标题格式化 净化求月票信息",
+    "replacement": "",
+    "serialNumber": 11,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 594,
+    "isRegex": true,
+    "regex": "([。！？、…\\u4e00-\\u9fa5]{2,5}?)\\1\\1+",
+    "replaceSummary": "简化 叠音词",
+    "replacement": "$1$1",
+    "serialNumber": 12,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 597,
+    "isRegex": true,
+    "regex": "(?<=\\n)(轻之国度录入组|仅供个人学习交流使用|下载后请在24小时内|请尊重翻译、扫图|所录入的每壹本书里|(译者|图源|扫图|录入|修图|校对|轻之国度|ePub制作者)[：:]).*",
+    "replaceSummary": "净化 本地书籍",
+    "replacement": "",
+    "serialNumber": 13,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 598,
+    "isRegex": true,
+    "regex": "<(center|font)\\b(.+?){1,3}</\\1>|</br>|&[a-zA-Z;]+;|&?(nbsp|quot|amp|lt|gt);|#[a-zA-Z][\\da-zA-Z]{4};|\\\\r\\\\n",
+    "replaceSummary": "净化 HTML标签<div>",
+    "replacement": "",
+    "serialNumber": 14,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 595,
+    "isRegex": true,
+    "regex": "(?<=\\r|\\n).*(感谢书友|书币的打赏|求(月|推荐)票|加更说明|更多精校小说|点击下一页继续阅读|个人微信号：|获取最快最新小说|app全文免费阅读|手机版(更新最快|阅读)网址|汉化组\\s?翻译|http:///txt).*",
+    "replaceSummary": "其他①",
+    "replacement": "",
+    "serialNumber": 15,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 596,
+    "isRegex": true,
+    "regex": "\\n([0-9]{1,2}|[一二三四五六七八九十]|[IV]{1,4})\\b(?=\\r?\\n)|[…—]{2}(?=[：！？])|(?mi)^\\h*[^0-9a-z\\u4e00-\\u9fa5]+\\h*$",
+    "replaceSummary": "其他②",
+    "replacement": "",
+    "serialNumber": 16,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 602,
+    "isRegex": true,
+    "regex": "(“|【|‘)([\\w\\d，、：•]{1,20}?)(”|】|’)",
+    "replaceSummary": "排版 格式化 普通双引号",
+    "replacement": "『$2』",
+    "serialNumber": 17,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 603,
+    "isRegex": true,
+    "regex": "(?<=[\\w\\d，、•『』]{16})，(?=(不[过但仅然料光妨]|并[^列排行集]|毕竟|比如|除[非却了]|从而|但[^丁]|而[^已]|反[而正之]|非但|反观|否则|此[时刻]|故而|更?何况|尽管|假[如若设]|就算|就连|仅仅|据说|既然|即[使便]|可[是当在]|况且|例如|另外[^的一二三四五十两几]|莫非|难道|哪怕|却[^之]|其实|如[果若今不]|若[^干曦]|[仍果忽突虽显]然|然[而后]|甚至|虽说|随后[^面边]|之?所以|万一|无论|因[为此而]|正因为|一旦|[一二][来则]|尤其|与其|于是|要是|只[要有是]|至于|之后|总之|自从|正如|直到|最终|(不错|不久前|此[时刻外]|当然|到时候|对了|的确|当[时下]|很快|还有|或者|结果|紧接着|另外|目前|那么|那就是|其[中次]|如此|[这那下]一瞬间|瞬间|实际上|同[样时]|我想|现在|相反|想了想|想到这里|眼下|远处|最[终好后]|自然|这样|至少|只可惜|最后|再者|这样吧|[这下]一[次刻]|\\w{2}以后|(最|更加?)\\w{1,2}的是|\\w{1,2}[分秒]钟后)，|殊不知|想不到|没想到|要不然|[到这]时候|说起来|说不定|说白了|这么说|如此说|只能说|可以说|[先且]不说|只不过|顷刻之?间|刹那之?间|相当于|一方面|换言之|好半天|基本上|要知道|请注意|[那也]就是|[要倒]不是|反倒是|特别是|君不见|相应的|再加上|接下来|不如这样|不光如此|换一?句话说|此情此景|恰在此时|与此同时|在[你我他]们?看来|(别的|不得)不说|(一般|简单)来说|更不用说|一时之?间|(这样|如此)一来|[这那]样的话|话说回来|(就在)?这个时候|就在刚[刚才]|除此[之以]外|[眨转]眼之?间|片刻之后|毫无疑问|可问题是|结果才?发现|现在看来|看得出来|与之相比|事到如今|[没不]多?一会儿)[\\w\\d、，•『』]{14})",
+    "replaceSummary": "排版 句号 格式化长句子",
+    "replacement": "。⛊",
+    "serialNumber": 18,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 604,
+    "isRegex": true,
+    "regex": "。⛊([\\d\\w、，•『』]{2,15})。⛊",
+    "replaceSummary": "排版 句号 修补上条规则",
+    "replacement": "。$1，",
+    "serialNumber": 19,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 605,
+    "isRegex": false,
+    "regex": "。⛊",
+    "replaceSummary": "排版 句号 格式化完成",
+    "replacement": "。",
+    "serialNumber": 20,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 606,
+    "isRegex": true,
+    "regex": "(?<=[\\d\\w，、•『』《》]{16}(。|；|[！？]{1,2}|……|——)”?)(?=[\\d\\w『《][\\d\\w，、•『』《》]{15})|(?<=\\S{10}”)(?=“\\S{10})",
+    "replaceSummary": "排版 拆分长段落",
+    "replacement": "\n",
+    "serialNumber": 21,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 608,
+    "isRegex": true,
+    "regex": "(?m)(?<=[。!！?？…—][”」）\\)]|[说道语谓曰唱吟叹喝哼喃诵读念]：$)|(?=“[^“”]{5,75}$)",
+    "replaceSummary": "标记段落：对白",
+    "replacement": "ன",
+    "serialNumber": 22,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 609,
+    "isRegex": true,
+    "regex": "(?=敌|(?<=[长短大小一三七九百千万双软铁钢竹木神宝血邪魔圣鬼残断钝利佩收挥提执持拎御])[刀枪剑戟矛杖拳弓箭盾幡鞭棍斧匕兵刃]|[权法]杖|匕首|[刀剑]柄|攻[^击城略读速伐气山]|防[御守备范护住着得]|守[护住着得]|(?<=[^喊天自他谋隐斩击])杀|(?<=[^悲哀情])伤[^心感月筋]|(?<=[^将])挡|(?<=[^逆夜一])袭|斩[^棘情]|砍|(?<=[^讽骨])刺[^激史眼绣猬毛耳鼻身青]|撕[^逼心]|(?<=[^一])掷|搏|劈|毙|击[^鼓缶]|罡|煞[^是]|(?<=[^乖])戾|(?<=[^惊行])骇[^浪客]|悍[^匪马妇妻将]|(?<=[^叫喧])嚣|衅|擂|逃[^难避]|遁|避[^免孕难险避风光雨实]|(?<=[^献])祭[^酒司器奠祀坛天]|(?<=[^牡金])丹[^麦青皮尼妮丹书境]|箓|(?<=[^(大悲)])咒[^骂]|蛊[^惑]|鞘|(?<=[^心诀开出])窍[^门]|(?<=[^烟漏北半一八内批])斗[^鱼牛鸡地大米笠篷角胆]|(?<=[^打])拼[^多凑图写]|轰[得然退飞击]|切磋|(?<=[了着入于丝据败])[上下]风|重创|强横|寒芒|不速|瓶颈|反噬|咽喉|眉心|破绽|要害|狠辣|埋伏|突围|真元|任督|经脉|周天|吐纳|功夫|武功|施展|招[式数]|之威|威能|纵身|瞬移|陨落|技能|碾压|封禁|封印|结印|掐诀|魔导|施法|(?<=[法杀禁布破幻大])阵|照面|回合|装备|底[牌蕴]|肉[泥掌身]|催[动发]|感[悟知]|身[形法躯影]|围[住困]|[暴爆][走发突起裂体]|神[识念通]|气[血息机海]|(?<=[法灵秘至])宝|(?<=[魔邪秘阵功道心术刀剑箭枪掌拳指])法|(?<=[法神魔圣念魂战原蛮劲邪实潜全脱掌内])力|(?<=[致性送保])命|(?<=[斗真元魔妖紫刀剑])气|(?<=[神灵法武暗])器|(?<=[护法分金真抽近脱防])身|(?<=[身后出暗辣联交])手|(?<=[法道神幻秘巫邪剑枪箭])术|(?<=[拆绝阴中后出狠变])招|邪能|邪灵|天赋|血脉|传承|淬骨|神奇物品|塔罗|序列\\d|魔药|盥洗室|逆走|灰雾)",
+    "replaceSummary": "标记段落：打斗",
+    "replacement": "ன",
+    "serialNumber": 23,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 610,
+    "isRegex": true,
+    "regex": "(?i)(?=npc|roll|boss|buff|bug|pvp|pk|gm|[上在断掉离下]线|小怪|精英怪|特殊怪|[首头]领怪|触发|剧情|主线|阵营|门派|种族|传送|地图|遗迹|爆率|光环|红名|任务|经验值|熟练度|属性[值点]|技能[点书]|经验值|进度条|耐久度|洗点|加[点血蓝攻防]|刷怪|代练|练级|群攻|团灭|单刷|抢怪|仇恨|坐标|血量|蓝条|攻略|组队|招募|佣兵|公会|会长|驻地|开荒|副本|[走卡]位|肉盾|输出|放风筝|结算|通关|[连爆]击|首杀|商店|酒馆|铁匠|附魔|图鉴|图纸|道具|药[剂水]|卷轴|令牌|金币|水晶|秘银|背包|包裹|戒指|装备|武器|[盔板链重]甲|玩家|菜鸟|天梯|拍卖|全息|虚拟|拟态|建模|账号|[首内公]测|服务器|激活|冻结|绑定|[等升掉满]级|氪金|面板|数据|日志|情报|兑换|频道|公告|广播|好感度|威望值|刺客|骑士|牧师|祭司|法师|术士|游侠|德鲁伊|弓箭手|哥布林|史莱姆|狗头人|野蛮人|地精|矮人|兽人|矮人|巨人|亚人|精灵|狼人|血族|吸血鬼|石像鬼|狮鹫|狂化|魔化|山猪|山贼|骷髅|亡灵|巫妖|恶魔|魅魔|召唤|宠物|坐骑|地狱|地下城|职业|转职|进阶|新手村|主城|领地|结算|复活|摸尸|跑环|挖矿|锻造|炼金|摆摊|传说级|史诗级|资料片|采集术|鉴定术|火球术|稀有材料)|(?m)^(?=\\S{2,9}(（\\S+）)?[：:][^“\\r\\n])|^(?=(\\d|[一二三四五六七八九十])[，、：])|(?=^【\\S{2,99}】$)",
+    "replaceSummary": "段落标记：网游",
+    "replacement": "ன",
+    "serialNumber": 24,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 611,
+    "isRegex": true,
+    "regex": "(?=安全区|避[难护]|庇护|变异|病毒|补给|超能力|仓库|草芥|搜[寻刮]|纯净水|弹[药夹]|地[盘下底]|废[弃墟土]|辐射|腐蚀|封锁|防[线护弹]|放哨|分配|怪[物兽]|骨刺|隔离|岗哨|改装|供给|合金|火力|混乱|荒[野原]|禁[区地]|阶[级层]|狙击|聚[集居]地|据点|机器|寄生|基因|巨[兽虫]|基地|军[队火刀刺]|将军|觉醒|看守|科技|旷野|卡车|蝼蚁|零件|末[世日]|难民|炮[弹火]|情报|枪[械支声口]|求生|区域|人性|生[化存]|丧尸|尸体|审判|狩猎|使徒|拾荒|生存|首领|守卫|特权|文明|污染|物资|武[器装]|违禁|亡命|外星[人文]|新世界|巡逻|幸存|血[腥迹清]|异[能化]|营地|要塞|越野|野[地外兽]|陨石|战[争火]|装甲|子弹|侦[测查察]|灾变|资源|治安|秩序|镇压|占领|[初中高终]级形态|第[一二三四]形态)",
+    "replaceSummary": "段落标记：末世",
+    "replacement": "ன",
+    "serialNumber": 25,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 612,
+    "isRegex": true,
+    "regex": "(?=(剥[^削离落夺皮茧]|(?<=[^含])苞[^米]|(?<=[^蓬勃])勃[^勃然生发朗]|屄|床|(?<=[^浪涨热狂人])潮[^汕州汐水声]|艹|肏|插[^曲件画头座嘴播柳队刀旗翅]|(?<=[^嘴])唇[^亡语]|(?<=[^残])喘|春[情意药光]|蒂|胴|(?<=[^山岩空漏])洞[^察悉庭府]|(?<=[^动震淫飘回扫激空荡])荡[^漾然除气秋]|裆|(?<=[^门])缝[^纫补合]|(?<=[^皮肌])肤[^浅]|粉嫩|媾|龟头|(?<=[^蘑])菇[^凉]|睾|肛|秽|含[住在入]|花[房谷瓣径蕊]|精[华液]|娇嫩|交[合缠]|肌[^肉肤]|妓|贱[^卖]|(?<=[^老])奸[^计佞细诈商贼滑臣雄]|菊|(?<=[^脑])浆|胯|撩|撸|裸|(?<=[^明])媚|(?<=[^鬼])魅[^影]|糜|[^面耳鼓]膜[^拜]|(?<=[^郭唾])沫(?=[^经])|奶子|内裤|[腻粘]滑|屁股|趴|啪|嫖|翘[^楚首课去]|姌|揉[^合碎眼面]|(?<=[^浴面酸])乳[^臭酸腺母]|(?<=[^猪牛狗鸡肌炖炒肥瘦精骨横赘锅人血])肉[^痛类眼质身馅片丝汁泥干桂麻]|(?<=[^温利])润[^喉嗓唇肺]|(?<=[^辐折扫齐注照透投弹四])射[^线击穿手频程箭杀日]|(?<=[^八结])舌|(?<=[^风])湿|(?<=[^要边关语堵闭])塞[^北班尔外车纳]|酥[^皮脆油饼茶松糖炸]|(?<=[^离])骚[^客年扰动乱骚包话]|(?<=[^怪困你鸟叫唤])兽[^人化魂宠]|私处|吮|呻|套弄|捅|躺[^枪赢尸椅]|舔|(?<=[^狼])吞[^吞噬云]|(?<=[^摆逃挣])脱[^离逃难困发单贫身口]|臀|体位|挑逗|(?<=[^药])丸[^药]|(?<=[^口])吻[^合]|胸[^怀襟]|(?<=[^巢点])穴[^道位]|亵|销魂|(?<=[^发水])泄(?=[^露])|香艳|性[爱感交欲器奴]|阴[^谋暗影凉天寒冷霾雨沉险毒森恻笑]|淫|阳[物具]|(?<=[^生僵强])硬[^件盘道座仗生汉币骨气功是]|(?<=[兽纵情])欲|欲[火仙死念焰液海望]|玉户|胀[^气闷]|浊))",
+    "replaceSummary": "标记段落：绯色",
+    "replacement": "ன",
+    "serialNumber": 26,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 615,
+    "isRegex": true,
+    "regex": "(?<=\\r|\\n)(?=\\S)",
+    "replaceSummary": "切换长段落",
+    "replacement": "ன",
+    "serialNumber": 27,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 616,
+    "isRegex": true,
+    "regex": "(?<=\\r|\\n)[^ன]+(?=\\r|\\n|$)|ன",
+    "replaceSummary": "删除其他段落",
+    "replacement": "",
+    "serialNumber": 28,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 617,
+    "isRegex": true,
+    "regex": "(?<=\\r|\\n).*ன.*(?=\\r|\\n|$)|ன",
+    "replaceSummary": "删除标记段落",
+    "replacement": "",
+    "serialNumber": 29,
+    "useTo": ""
+  },
+  {
+    "enable": false,
+    "id": 618,
+    "isRegex": false,
+    "regex": "ன",
+    "replaceSummary": "听书“读音”修正\n日常阅读请禁用",
+    "replacement": "",
+    "serialNumber": 30,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 34,
+    "isRegex": true,
+    "regex": "(\\B\\W*)?([最更][快新优優]|天才|[找看]?本[站书](?![看籍])|如果您喜欢|[一1壹]秒记?|(第?[1壹一eE])?小说|(为了方便下次|欢迎)阅读|罩杯女|看\\W?小\\W?说|原创|以下是|章节(内容)?|[a-zA-Z]+\\.|手(打|机(阅读|用户))|2[kK]|为您提|(提供)?无弹窗|(高速)?首发|[纯全]文字|免费电|请用搜|(猎文|奇书)网|(武林|三七)中文|泰国最|(新书|月票)榜?).*(\\r\\n)?.*(((小[说說])?(在线)?(首发地?|(阅读|閱讀|用户)(體驗|体验|网|器)?))|复制|求?(订阅|推荐|票?支持)|访问|来发现|下载|广告|[章情]节|搜索|站哦?|赛吧?|用户独享|[网網地]址?|[mMgG]|[最更][快新])\\W*",
+    "replaceSummary": "通用长垃圾集合",
+    "replacement": "",
+    "serialNumber": 31
+  },
+  {
+    "enable": true,
+    "id": 35,
+    "isRegex": true,
+    "regex": "(^\\W*)?(\\(未完待续|求(.{1,2}票|收藏|订阅).*|本文地址|欢迎阅读|.?顶\\W?点\\W?小\\W?说|请使用访问.*|请牢记.*|里面(小说)?.*破防盗|\\[搜索尽在.*\\]|《书.?香.?阁.*|.*免费更新|最\\s{0,3}新.{0,3}全.*)\\W*",
+    "replaceSummary": "通用短垃圾集合",
+    "replacement": "",
+    "serialNumber": 32
+  },
+  {
+    "enable": true,
+    "id": 38,
+    "isRegex": true,
+    "regex": "(http://)?([a-zA-Z]+\\.)+[a-zA-Z]+|(https?\\:)?(//)?[WwｗＷ]{1,3}.*",
+    "replaceSummary": "去网址",
+    "replacement": "",
+    "serialNumber": 33
+  },
+  {
+    "enable": true,
+    "id": 54,
+    "isRegex": true,
+    "regex": "[(]|[)]|好看的txt电子书|必读居|免费TXT|（|）|(|)|",
+    "replaceSummary": "去多余的",
+    "replacement": "",
+    "serialNumber": 34,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 134,
+    "isRegex": false,
+    "regex": "&quot;|(?m)^(作者：|字数：|by：|20\\d{6}).*",
+    "replaceSummary": "净化",
+    "replacement": "",
+    "serialNumber": 35,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 135,
+    "isRegex": false,
+    "regex": "(?m)^\\s*[上下]一[页]\\s*$",
+    "replaceSummary": "自由",
+    "replacement": "",
+    "serialNumber": 36,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 630,
+    "isRegex": true,
+    "regex": "(?<=东躲)\\*\\*",
+    "replaceSummary": "**/西藏",
+    "replacement": "西藏",
+    "serialNumber": 37,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 624,
+    "isRegex": true,
+    "regex": "(?<=洞巢虎深涌泉)\\*|\\*(?=位内)",
+    "replaceSummary": "*/穴",
+    "replacement": "穴",
+    "serialNumber": 38,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 50,
+    "isRegex": true,
+    "regex": "(?<=呆若木[公母])\\*|\\*(?=巴)",
+    "replaceSummary": "*/鸡",
+    "replacement": "鸡",
+    "serialNumber": 39,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 574,
+    "isRegex": true,
+    "regex": "(?<=十[有之])\\*\\*|\\*\\*(?=不离十|事件|[分秒天周月年岁个部辆台点厘米丈寸斤吨成折])",
+    "replaceSummary": "**/八九",
+    "replacement": "八九",
+    "serialNumber": 40,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 578,
+    "isRegex": true,
+    "regex": "(?<=[赤])\\*{2}(?=裸)",
+    "replaceSummary": "**/赤裸",
+    "replacement": "赤裸",
+    "serialNumber": 41,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 1,
+    "isRegex": true,
+    "regex": "(?<=[大着内])\\*\\6\\l[uù](?=[地续])",
+    "replaceSummary": "lù/6/陆",
+    "replacement": "陆",
+    "serialNumber": 42,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 3,
+    "isRegex": true,
+    "regex": "(?<=[如])春\\ch[uū]n\\*(?=[天风雨季雷])",
+    "replaceSummary": "chūn/春",
+    "replacement": "春",
+    "serialNumber": 43,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 4,
+    "isRegex": true,
+    "regex": "(?<=[空晃动])荡\\d[aà]ng\\*(?=[漾])",
+    "replaceSummary": "dàng/荡",
+    "replacement": "荡",
+    "serialNumber": 44,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 5,
+    "isRegex": true,
+    "regex": "(?<=[震振])动\\d[oò]ng\\*(?=[作荡])",
+    "replaceSummary": "dòng/动",
+    "replacement": "动",
+    "serialNumber": 45,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 6,
+    "isRegex": true,
+    "regex": "(?<=[空漏山])洞\\d[oò]ng\\*(?=[天府])",
+    "replaceSummary": "dòng/洞",
+    "replacement": "洞",
+    "serialNumber": 46,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 579,
+    "isRegex": true,
+    "regex": "(?<=[^a-zA-Z])婊\\bi[aǎ]o\\*(?=[^a-zA-Z])",
+    "replaceSummary": "biǎo/婊",
+    "replacement": "婊",
+    "serialNumber": 47,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 580,
+    "isRegex": true,
+    "regex": "艹|(?<=[^a-zA-Z])操\\c[aā]o\\*(?=[^a-zA-Z])|X(?=淡)|(?<=我)X",
+    "replaceSummary": "cāo/操",
+    "replacement": "操",
+    "serialNumber": 48,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 47,
+    "isRegex": true,
+    "regex": "(?<=[贞节体我])操\\[Cc][aā]o\\*(?=[我弄你妈场蛋死得练心办着场])",
+    "replaceSummary": "cāo/操",
+    "replacement": "操",
+    "serialNumber": 49,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 2,
+    "isRegex": true,
+    "regex": "(?<=[手安])插\\ch[aā]\\*(?=[槽曲头座队入秧进])",
+    "replaceSummary": "chā/插",
+    "replacement": "插",
+    "serialNumber": 50,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 7,
+    "isRegex": true,
+    "regex": "(?<=[心浪水])花\\hu[aā]\\*(?=[样式开椒招])",
+    "replaceSummary": "huā/花",
+    "replacement": "花",
+    "serialNumber": 51,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 582,
+    "isRegex": true,
+    "regex": "(?<=[^a-zA-Z])裸\\lu[oǒ]\\*{1,2}(?=[^a-zA-Z])",
+    "replaceSummary": "luǒ/裸 ",
+    "replacement": "裸",
+    "serialNumber": 52,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 14,
+    "isRegex": true,
+    "regex": "(?<=赤)裸\\lu[oǒ]\\*(?=[露睡体奔])",
+    "replaceSummary": "luǒ/祼",
+    "replacement": "祼",
+    "serialNumber": 53,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 8,
+    "isRegex": true,
+    "regex": "(?<=[精灵])魂\\h[uú]n\\*(?=魄归)",
+    "replaceSummary": "hún/魂",
+    "replacement": "魂",
+    "serialNumber": 54,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 583,
+    "isRegex": true,
+    "regex": "(?<=[^a-zA-Z])弄\\n[oò]ng\\*(?=[^a-zA-Z])",
+    "replaceSummary": "nòng/弄",
+    "replacement": "弄",
+    "serialNumber": 55,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 584,
+    "isRegex": true,
+    "regex": "(?<=[^a-zA-Z])骚\\s[aā]o\\*(?=[^a-zA-Z])",
+    "replaceSummary": "sāo/骚",
+    "replacement": "骚",
+    "serialNumber": 56,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 585,
+    "isRegex": true,
+    "regex": "(?<=[^a-zA-Z])诱\\y[oò]u\\*(?=[^a-zA-Z])",
+    "replaceSummary": "yòu/诱",
+    "replacement": "诱",
+    "serialNumber": 57,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 9,
+    "isRegex": true,
+    "regex": "(?<=[迷困疑蛊所诱])惑\\hu[oò]\\*",
+    "replaceSummary": "huò/惑",
+    "replacement": "惑",
+    "serialNumber": 58,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 586,
+    "isRegex": true,
+    "regex": "(?<=[^a-zA-Z])性\\x[iì]ng\\*(?=[^a-zA-Z])",
+    "replaceSummary": "xìng/性",
+    "replacement": "性",
+    "serialNumber": 59,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 10,
+    "isRegex": true,
+    "regex": "(?<=[感冲刺过])激\\j[iī]\\*(?=[动烈进昂战发怒动增将化荡活情励])",
+    "replaceSummary": "jī/激",
+    "replacement": "激",
+    "serialNumber": 60,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 587,
+    "isRegex": true,
+    "regex": "(?<=[^a-zA-Z])欲\\y[uù]\\*(?=[^a-zA-Z])",
+    "replaceSummary": "yù/欲",
+    "replacement": "欲",
+    "serialNumber": 61,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 683,
+    "isRegex": true,
+    "regex": "(?<=[美白])玉\\yu|yù\\*(?=[手体皇虚宫石人])",
+    "replaceSummary": "yu/玉",
+    "replacement": "玉",
+    "serialNumber": 62,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 12,
+    "isRegex": true,
+    "regex": "(?<=[口性])(交\\jio\\ji[aā]o\\*)(?=[流给待火易射加涉])",
+    "replaceSummary": "jiāo/交",
+    "replacement": "交",
+    "serialNumber": 63,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 581,
+    "isRegex": true,
+    "regex": "(?<=[^a-zA-Z])奸\\ji[aā]n\\*(?=[^a-zA-Z])",
+    "replaceSummary": "jiān/奸",
+    "replacement": "奸",
+    "serialNumber": 64,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 67,
+    "isRegex": true,
+    "regex": "(?<=[迷强])奸\\[Jj]i[āa]n\\*(?=[臣人淫])",
+    "replaceSummary": "jiān/奸",
+    "replacement": "奸",
+    "serialNumber": 65,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 23,
+    "isRegex": true,
+    "regex": "(?<=白日宣[手奸邪])淫\\y[ií]n\\*(?=[声水液辱呻浪靡糜猥亵叫邪媚荡乱秽穴具僧魔妇贼])",
+    "replaceSummary": "yín/淫",
+    "replacement": "淫",
+    "serialNumber": 66,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 15,
+    "isRegex": true,
+    "regex": "mén",
+    "replaceSummary": "mén/门",
+    "replacement": "门",
+    "serialNumber": 67,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 16,
+    "isRegex": true,
+    "regex": "(?<=[捉玩摆])弄\\n[oò]ng\\*(?=[虚手臣明点权])",
+    "replaceSummary": "nòng/弄",
+    "replacement": "弄",
+    "serialNumber": 68,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 17,
+    "isRegex": true,
+    "regex": "(?<=[一男儿淑美少儿处])女\\nv\\*(?=[人孩子士儿子官装帝王奴])",
+    "replaceSummary": "nv/女",
+    "replacement": "女",
+    "serialNumber": 69,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 18,
+    "isRegex": true,
+    "regex": "(?<=[发牢风])骚\\s[aā]o\\*(?=[穴动气乱扰气客话])",
+    "replaceSummary": "sāo/骚",
+    "replacement": "骚",
+    "serialNumber": 70,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 19,
+    "isRegex": true,
+    "regex": "(?<=[白黄])色\\s[eè]\\*(?=[鬼狼诱])",
+    "replaceSummary": "sè/色",
+    "replacement": "色",
+    "serialNumber": 71,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 21,
+    "isRegex": true,
+    "regex": "(?<=[大小])腿\\tu[iǐ]\\*(?=[部上软])",
+    "replaceSummary": "tuǐ/腿",
+    "replacement": "腿",
+    "serialNumber": 72,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 41,
+    "isRegex": true,
+    "regex": "(?<=[裸])胸\\xi[oō]ng\\*(?=[罩脯前膛腔口部肌围])",
+    "replaceSummary": "xiōng/胸",
+    "replacement": "胸",
+    "serialNumber": 73,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 22,
+    "isRegex": true,
+    "regex": "(?<=[属血人能攻害征死])性\\x[iì]ng\\*(?=[情能格致质别])",
+    "replaceSummary": "xìng/性",
+    "replacement": "性",
+    "serialNumber": 74,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 46,
+    "isRegex": true,
+    "regex": "(?<=[乌])(龟\\gu[iī]\\*)(?=[头孙儿])",
+    "replaceSummary": "guī/龟",
+    "replacement": "龟",
+    "serialNumber": 75,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 24,
+    "isRegex": true,
+    "regex": "(?<=[太光元女遮真下])阴\\y[iī]n\\*(?=[狠茎气唇核部森沉蒂道户穴阳精历霾暗干面凉影谋毒险湿天魂寒文晦冷骘唇毛])",
+    "replaceSummary": "yīn/阴",
+    "replacement": "阴",
+    "serialNumber": 76,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 44,
+    "isRegex": true,
+    "regex": "(?<=[阴])阳\\y[áa]ng\\*)(?=[刚光器物具])",
+    "replaceSummary": "yáng/阳",
+    "replacement": "阳",
+    "serialNumber": 77,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 45,
+    "isRegex": true,
+    "regex": "(?<=[肥猪])肉(ròu|rou|\\*)(?=[洞盾末沫棒体便])",
+    "replaceSummary": "ròu/肉",
+    "replacement": "肉",
+    "serialNumber": 78,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 49,
+    "isRegex": true,
+    "regex": "(?<=[牛羊马豆])奶\\n[aǎ]i\\*(?=[子头奶瓶茶油粉])",
+    "replaceSummary": "nǎi/奶",
+    "replacement": "奶",
+    "serialNumber": 79,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 48,
+    "isRegex": true,
+    "regex": "(?<=[母美酥椒淑嫩哺娇双左右粉玉])乳\\r[uǔ]\\*(?=[白头峰房球尖])",
+    "replaceSummary": "rǔ/乳",
+    "replacement": "乳",
+    "serialNumber": 80,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 640,
+    "isRegex": true,
+    "regex": "(?=肮好)脏\\z[aā]ng\\*(?=活)",
+    "replaceSummary": "zāng/脏",
+    "replacement": "脏",
+    "serialNumber": 81,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 11,
+    "isRegex": true,
+    "regex": "(?<=[神人])(精\\j[iī]ng\\*)(?=[液力神灵怪魄确魂气血锐])",
+    "replaceSummary": "jīng/精",
+    "replacement": "精",
+    "serialNumber": 82,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 20,
+    "isRegex": true,
+    "regex": "(?<=[弹发暗影注喷反辐放交])射\\sh[eè]\\*(?=[精箭日击程手])",
+    "replaceSummary": "shè/射",
+    "replacement": "射",
+    "serialNumber": 83,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 53,
+    "isRegex": true,
+    "regex": "(?<=[小的肏浪舔黑淫粉娘她大老说骚嫩])屄\\[Bb][iī]\\*(?=[腔口痒事肏里内上缝])",
+    "replaceSummary": "bī/屄",
+    "replacement": "屄",
+    "serialNumber": 84,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 57,
+    "isRegex": true,
+    "regex": "做\\[Zz]u[oò]\\*(?=[爱])",
+    "replaceSummary": "zuò/做",
+    "replacement": "做",
+    "serialNumber": 85,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 58,
+    "isRegex": true,
+    "regex": "(?<=[阴])蒂\\[Dd][iì]\\*",
+    "replaceSummary": "dì/蒂",
+    "replacement": "蒂",
+    "serialNumber": 86,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 59,
+    "isRegex": true,
+    "regex": "处[Cc]h[uù]\\*(?=[女子])",
+    "replaceSummary": "chù/处",
+    "replacement": "处",
+    "serialNumber": 87,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 60,
+    "isRegex": true,
+    "regex": "(?<=[港金破可开井借进户收关住变闭])口\\[Kk]][oǒ]u\\*(?=[才交福里袋唇破齿舌牙])",
+    "replaceSummary": "kǒu/口",
+    "replacement": "口",
+    "serialNumber": 88,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 63,
+    "isRegex": true,
+    "regex": "(?<=[傻])逼\\[Bb][iī]|[Bb][iī]\\*(?=[上死[我们]近])",
+    "replaceSummary": "bī/逼",
+    "replacement": "逼",
+    "serialNumber": 89,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 64,
+    "isRegex": true,
+    "regex": "(?<=[人])贱\\ji[aà]n|ji[aà]n\\*(?=[人货])",
+    "replaceSummary": "jiàn/贱",
+    "replacement": "贱",
+    "serialNumber": 90,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 684,
+    "isRegex": true,
+    "regex": "(?<=[大])小\\xiao|xiǎo\\*(?=[人孩篆说])",
+    "replaceSummary": "xiǎo/小",
+    "replacement": "小",
+    "serialNumber": 91,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 685,
+    "isRegex": true,
+    "regex": "舔\\tian[tiǎn]\\*(?=[咬舐弄干血屁股])",
+    "replaceSummary": "tiǎn/舔",
+    "replacement": "舔",
+    "serialNumber": 92,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 686,
+    "isRegex": true,
+    "regex": "(?<=[涨])潮\\ch[aá]o\\*(?=[水汐涨落汛流红涌])",
+    "replaceSummary": "cháo/潮",
+    "replacement": "潮",
+    "serialNumber": 93,
+    "useTo": ""
+  },
+  {
+    "enable": true,
+    "id": 687,
+    "isRegex": true,
+    "regex": "(?<=翘美)臀\\t[uú]n\\*(?=部)",
+    "replaceSummary": "tún/臀",
+    "replacement": "臀",
+    "serialNumber": 94,
+    "useTo": ""
+  }
+]
